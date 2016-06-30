@@ -3,9 +3,13 @@ An SBT plugin that adapts a SBT project to follow the angular2 style guide, and 
 
 ## Prerequisites
 
-The _Angular-cli_ generated project has dependencies that require Node 4 or greater.
+The _Angular-cli_ beta.6 generated project has dependencies that require Node 4.4 and npm 3.10 or greater. Be sure you fullfill that:
 
-_Angular-cli_ should be already installed.
+`node --version` should be >= 4.4
+
+`npm --version` should be >= 3.10
+
+[Angular-cli](https://github.com/angular/angular-cli) should be already installed. You can do that with:
 
 `npm install -g angular-cli`
 
@@ -26,9 +30,16 @@ The example use the *minimal-scala* template, but any other template would be fi
 
 A conflict with the ".gitignore" file may be shown. In that case, choose "overwrite" after opening the file and copying its contents to the clipboard. When the "ng init" commands finishes, append the clipped text to the new ".gitignore" file.
 
+####Check the ng command is working:
+`ng`
+
+If an error similar to "Error: Cannot find module 'exists-sync'" is thrown, solve it with:
+
+`npm install`
+
 ####Add this plugin to the build:
 
-Create a new file named "angular-cli.sbt" inside the "project" folder and append the following line to it:
+Create a new file named "angular-cli.sbt" inside the "~/project" folder and append the following line to it:
 
 `addSbtPlugin("readren" % "angular-cli-plugin" % "0.1.1-SNAPSHOT")`
 
@@ -45,4 +56,5 @@ lazy val root = (project in file("."))
 ##Usage
 
 Use the `build` task to build the client side of the application. Its equivalent to `ng build`.
-Use the `ng <parameters>` input task to execute any _angular-cli_ command.
+
+Use the `ng <parameters>` input task to execute any other _angular-cli_ command.
