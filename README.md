@@ -26,6 +26,7 @@ The example use the *minimal-scala* template, but any other template would be fi
 ####Add the _angular-cli_ nature to the project:
 
 `cd my-project-name`
+
 `ng init`
 
 A conflict with the ".gitignore" file may be shown. In that case, choose "overwrite" after opening the file and copying its contents to the clipboard. When the "ng init" commands finishes, append the clipped text to the new ".gitignore" file.
