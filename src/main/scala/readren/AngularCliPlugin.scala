@@ -48,7 +48,7 @@ object AngularCliPlugin extends AutoPlugin {
 			javaSource in Compile := appDirectory.value,
 			javaSource in Test := appDirectory.value,
 			
-			resourceDirectory := baseDirectory.value / "global-resources", // "runtime-conf" could be more appropriate but more specific than necessary 
+			resourceDirectory := sourceDirectory.value / "resources", // "runtime-conf" could be more appropriate but more specific than necessary 
 			resourceDirectory in Compile := resourceDirectory.value / "main",
 			resourceDirectory in Test := resourceDirectory.value / "test",
 			

@@ -1,9 +1,9 @@
 # angular-cli-sbt-plugin
-An SBT plugin that adapts a SBT project to follow the angular2 style guide, and collaborate with angular-cli.
+An SBT plugin that adapts a SBT project to follow the angular2 style guide, and collaborate with _angular-cli_.
 
 ## Prerequisites
 
-The _Angular-cli_ beta.6 generated project has dependencies that require Node 4.4 and npm 3.10 or greater. Be sure you fullfill that:
+The _angular-cli_ beta.6 generated project has dependencies that require Node 4.4 and npm 3.10 or greater. Be sure you fullfill that:
 
 `node --version` should be >= 4.4
 
@@ -32,6 +32,7 @@ The example use the *minimal-scala* template, but any other template would be fi
 A conflict with the ".gitignore" file may be shown. In that case, choose "overwrite" after opening the file and copying its contents to the clipboard. When the "ng init" commands finishes, append the clipped text to the new ".gitignore" file.
 
 ####Check the ng command is working:
+Use the `ng` command to check if it is working:
 `ng`
 
 If an error similar to "Error: Cannot find module 'exists-sync'" is thrown, solve it with:
@@ -39,14 +40,12 @@ If an error similar to "Error: Cannot find module 'exists-sync'" is thrown, solv
 `npm install`
 
 ####Add this plugin to the build:
-
-Create a new file named "angular-cli.sbt" inside the "~/project" folder and append the following line to it:
+Create a new file named "angular-cli.sbt" inside the "<projectBase>/project" folder and append the following line to it:
 
 `addSbtPlugin("readren" % "angular-cli-plugin" % "0.1.1-SNAPSHOT")`
 
 ####Enable this plugin:
-
-Open the "build.sbt" and append this block:
+Open the "build.sbt" file and append this block:
 
 <pre>
 lazy val root = (project in file("."))
@@ -54,8 +53,15 @@ lazy val root = (project in file("."))
 	.settings(AngularCliPlugin.overridenProjectSettings)
 </pre>
 
-##Usage
+####Remove non used directories
+Remove the default sbt source directories `<projectBase>/src/main` and `<projectBase>/src/test` created by the "minimal-scala" template.
 
-Use the `build` task to build the client side of the application. Its equivalent to `ng build`.
+##Usage
+The SBT part of the project would be as usual except the source directory structure. The `scalaSource` and `javaSource` settings point to "<projectBase>/src/app" for both, the compile and test configurations.
+The criteria to discriminate between compile, test, server, or client source are file name tags, instead of the containing directory.   
+
+The _angular-cli_ part of the project can be managed as usual from the console, or inside the SBT interactive CLI. This plugin adds two sbt task to handle _angular-cli_ from SBT:
+
+Use the `build` task to build the client side of the application. It's equivalent to `ng build`.
 
 Use the `ng <parameters>` input task to execute any other _angular-cli_ command.
