@@ -4,11 +4,12 @@
 /project/project/
 /project/target/
 /target/
-
+/webServer/target/
 /bin/
+/webServer/bin/
 /libexec/
 
 .cache-main
 .classpath
 .project
-/.settings/
+.settings/
