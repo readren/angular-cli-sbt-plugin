@@ -95,7 +95,7 @@ class WebFacadeHelper(missingResourcesManager: ActorRef)(implicit actorSystem: A
 
 	def bindAndHandle(apiHandlerRoute: Route, interface: String = "0.0.0.0", port: Int = 9000): Future[Http.ServerBinding] = {
 		val routeFlow: Flow[HttpRequest, HttpResponse, NotUsed] = Route.handlerFlow(compoundRoute(apiHandlerRoute))
-		val fServerBinding = Http().bindAndHandle(routeFlow, interface = "0.0.0.0", port = port)
+		val fServerBinding = Http().bindAndHandle(routeFlow, interface = interface, port = port)
 		log.info(s"listening to $interface:$port")
 		fServerBinding
 	}
