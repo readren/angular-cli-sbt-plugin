@@ -1,7 +1,7 @@
 
 lazy val commonSettings = Seq(
 	organization := "readren",
-	version := "0.2.1-SNAPSHOT"
+	version := "0.2.2-SNAPSHOT"
 )
 
 

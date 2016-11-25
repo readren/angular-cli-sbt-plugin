@@ -43,8 +43,8 @@ class WebFacadeHelper(missingResourcesManager: ActorRef)(implicit actorSystem: A
 			getFromResource(indexFilePath)
 		}
 
-	val defaultFilter: String => Boolean = fileName => fileName.endsWith(".html") || fileName.endsWith(".js") || fileName.endsWith(".map") || fileName.endsWith(".ico")
-
+	val defaultFilter: String => Boolean = fileName => fileName.endsWith(".html") || fileName.endsWith(".js") || fileName.endsWith(".map") || fileName.endsWith(".ico") || fileName.endsWith(".png");
+	
 	def staticFilesRoute(filter: String => Boolean = defaultFilter): Route =
 		extractUnmatchedPath { path =>
 			assert(path.head.toString == "/")
