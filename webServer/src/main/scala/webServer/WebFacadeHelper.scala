@@ -77,6 +77,11 @@ class WebFacadeHelper(missingResourcesManager: ActorRef)(implicit actorSystem: A
 						else
 							akka.event.Logging.ErrorLevel
 					)
+				case c: RouteResult.Rejected =>
+					LogEntry(
+						in + s"request rechazado con " + c.rejections,
+						akka.event.Logging.WarningLevel
+					)
 				case x =>
 					LogEntry(
 						in + s"unknown response part of type ${x.getClass}",
